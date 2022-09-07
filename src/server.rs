@@ -1,17 +1,20 @@
+use std::net::TcpListener;
 
- pub struct Server {
-     attr: String
- }
- 
- impl Server {
-     pub fn new(attr: String) -> Self {
-         Self {
-             attr 
-         }
-     }
- 
-     pub fn run(self){
-          println!("listening on port {}", self.attr);
-     }
+pub struct Server {
+    addr: String
+}
+
+impl Server {
+    pub fn new(addr: String) -> Self {
+        Self {
+            addr 
+        }
+    }
+
+    pub fn run(self){
+         println!("listening on port {}", self.addr);
+
+         let listener = TcpListener::bind(&self.addr).unwrap();
+    }
 }
 
